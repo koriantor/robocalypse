@@ -1,3 +1,4 @@
-.node_modules/
-.accountInfo.json
-.robocalypse.js
+images/
+node_modules/
+accountInfo.json
+robocalypse.js

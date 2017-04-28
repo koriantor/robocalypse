@@ -18,4 +18,8 @@ npm install client-oauth2 --save
 
 // TODO: Set up oauth for all roberts
 // TODO: Write tweet functions
+
+
 // TODO: Hook HTML UI to core functiosn
+// TODO: Add event listener from page
+

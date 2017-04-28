@@ -3,12 +3,12 @@
 
   "name": "Robocalypse",
   "description": "Tool for tweeting as different Roberts.",
-  "version": "0.1.0",
+  "version": "0.1.1",
 
   "background": {
     "scripts": ["eventPage.js"],
 	"persistent": false
-  }
+  },
   "content_scripts": [ 
 	{
 	  "matches": ["https://www.twitter.com/*"],
