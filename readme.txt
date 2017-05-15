@@ -1,9 +1,6 @@
 TWITTER TODOS:
 	FRONT END:
 		-Inject html into page through content script
-			$(".TweetBoxToolbar-tweetButton.tweet-button")
-				-Make sure loads on modal content (tweet click)
-				-Mutation Observer -- everytime something with class ".TweetBoxToolbar-tweetButton.tweet-button" is loaded, add a span with this page
 		-Synchronize selected bobby, maintain state across all dropdowns.
 		-Hijack Tweet button to TweetAs(bobby)
 			-Event Listener on identifying button attribute?
@@ -13,6 +10,8 @@ TWITTER TODOS:
 	BACKEND:
 		-TweetAs(bobby, tweetContent)
 		-TweetAs(bobby, tweetContent, tweetRespondingTo)
+			-Redirect to new tweet
+			-use promises?
 		-Authentication
 		
 	FUTURE:

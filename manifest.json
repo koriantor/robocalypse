@@ -7,13 +7,13 @@
 
   "background": {
     "scripts": ["eventPage.js"],
-	"persistent": false
+	  "persistent": false
   },
   "content_scripts": [ 
 	{
-	  "matches": ["https://www.twitter.com/*"],
-	  "css": [],
-	  "js": []
+	  "matches": ["https://*.twitter.com/*"],
+	  "css": [], // TODO: -s Declare CSS file for injected html
+	  "js": ["jquery-3.2.1.min.js", "twitter.js"]
 	}
   ],
   "incognito": "split",
@@ -24,6 +24,10 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
+  ],
+  "web_accessible_resources": [
+    "images/*.png",
+    "twitter.js",
+    "selectRobDropDown.html"
   ]
-  
 }
