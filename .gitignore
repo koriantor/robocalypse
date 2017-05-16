@@ -1,4 +1,8 @@
-images/
+css/
+html/
+img/
+js/
 accountInfo.json
 icon.png
 jquery-3.2.1.min.js
+twitter_core.bundle.css
