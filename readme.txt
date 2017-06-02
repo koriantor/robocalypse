@@ -1,22 +1,17 @@
 TWITTER TODOS:
 	FRONT END:
-		-Inject html into page through content script
-		-Synchronize selected bobby, maintain state across all dropdowns.
-		-Hijack Tweet button to TweetAs(bobby)
-			-Event Listener on identifying button attribute?
-			-Read value from DDL (doesn't matter which if all synced)
 		-Styles
+		-Fix dropdown Caret
+		-Fix Dropdown animations
+		-Remember last selected bobby
+		-Tweet Images, gifs, etc.
 	
 	BACKEND:
-		-TweetAs(bobby, tweetContent)
-		-TweetAs(bobby, tweetContent, tweetRespondingTo)
-			-Redirect to new tweet
-			-use promises?
+		-TweetAs()
+		-Tweet images, gifs, etc.
 		-Authentication
-		
-	FUTURE:
-		-Basic Extension Icon Interface
-			-Consider implementing this first so team can use functionality
-		-Options interface for advanced features
-			-"You're tweeting as X.  Are you sure?"
-		-Auto refresh
+		-Consider using chrome.pageAction instead of browser action
+
+Settings:
+	-Ask for Confirmation before tweet
+	-Redirect page after tweet

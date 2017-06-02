@@ -1,15 +1,19 @@
-<link rel="stylesheet" type="text/css" href="popup.css">
-<link rel="stylesheet" type="text/css" href="twitter_core.bundle.css">
-<script src="jquery-3.2.1.min.js"></script>
-<script src="app.js"></script>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="popup.css">
+	<link rel="stylesheet" type="text/css" href="twitter_core.bundle.css">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
 <div class="rob-dropdown">
-	<button class="rob-selected">
-		<div class="dropdown-caret">
-			<span>Bobby (TODO: Hook JS)</span>
-			<div class="carret-outer"></div>
-			<div class="carret-inner"></div>
-		</div>
+	<button class="rob-selected" data-selected="Ghost_Bobby">
+		<img class="rob-selected-img" src="img/Ghost_Bobby.jpg"></img>
 	</button>
+	<div class="dropdown-caret">
+		<div class="caret-outer"></div>
+		<div class="caret-inner"></div>
+	</div>
 	<ul class="rob-dropdown-content" data-state="closed">
 		<li data-value="Ghost_Bobby">
 			<button>
@@ -51,7 +55,7 @@
 				<img src="img/_bobossa_.jpg"></img>
 			</button>
 		</li>
-		<li data-value="__cobby__ ">
+		<li data-value="__cobby__">
 			<button>
 				<img src="img/__cobby__.jpg"></img>
 			</button>
@@ -76,7 +80,7 @@
 				<img src="img/MardiGrasbert.jpg"></img>
 			</button>
 		</li>
-		<li data-value="philosorobert_ ">
+		<li data-value="philosorobert_">
 			<button>
 				<img src="img/philosorobert_.jpg"></img>
 			</button>
@@ -93,8 +97,12 @@
 		</li>
 	</ul>
 </div>
-<input id="tbTweet" class="" type="text"></input>
-<div class="js-tweet-counter">140</div>
-<button class="btn btn-tweet">
-	Tweet
-</button>
+<div>
+	<input id="tbTweet" class="" type="text"></input>
+	<div class="js-tweet-counter">140</div>
+	<button class="btn btn-tweet">
+		Tweet
+	</button>
+</div>
+</body>
+</html>

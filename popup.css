@@ -1,14 +1,20 @@
+html {
+    width: 300px;
+    height: 300px;
+}
+body {
+    width: 300px;
+    height: 300px;
+}
 img {
     height: 30px;
+    border-radius: 2px;
 }
 
 .rob-dropdown {
-    -webkit-appearance: none;  /* removes default Chrome & Safari style */
-    -moz-appearance: none;  /* removes default Firefox style */
-
+    -webkit-appearance: none;  /* removes default Chrome style */
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    font-size: 14px;
     padding: 10px;
     width: 35%;
 }
@@ -21,18 +27,64 @@ img {
     padding: 12px 16px;
     z-index: 1;
 }
+    .rob-dropdown-content[data-state=closed] {
+        visibility: hidden;
+    }
+    .rop-dropdown-content[data-state=open] {
+        /*transition: animation 1s;*/
+        transition: visibility 2s;
+        animation: fadeInAndDown 1s ease-in both;
+        visibility: inherit;
+    }
+    .rob-dropdown-content > li {
+        display: inline-block;
+        padding: 1px;
+        transition: box-shadow .1s;
+    }
+        .rob-dropdown-content > li:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
 
-.rob-dropdown-content[data-state=closed] {
-    display: none;
-    
+/* From Twitter */
+/* TODO: Fix Caret
+.dropdown-caret {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    width: 18px;
+    height: 10px;
+    float: left;
+    overflow: hidden;
 }
 
-.rop-dropdown-content[data-state=open] {
-    display: inherit;
+.dropdown-caret .caret-outer {
+    border-bottom: 10px solid #657786;
+    border-bottom-color: rgba(0,0,0,0.1);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    height: auto;
+    left: 0;
+    top: 0;
+    width: auto;
 }
 
-/*.dropdown-open > ul > li {
-    display: block;
+.dropdown-caret .caret-inner {
+    top: 1px;
+    left: 1px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #fff;
+    border-bottom-color: #fff;
 }*/
 
-/* TODO: Write Bobby Selection styles */
+/* Animations */
+@keyframes fadeInAndDown {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
