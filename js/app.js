@@ -9,8 +9,7 @@ var onTweet = function() {
     // read from Bobdown
 
     // Redirect to new tweet
-    let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    chrome.tabs.update(currentTab.id, {url: newUrl});
+    
 };
 
 // TODO: Write authentication
@@ -54,8 +53,20 @@ $(function() {
         let bob = $('.rob-selected').attr('data-selected');
         let tweet = $('#tbTweet').val();
         console.log('Bob (' + bob + ') tweeted: ' + tweet);
-        // TODO: Tweet function
-        // TODO: Redirect and close
+        chrome.tabs.query({'active': true, 'currentWindow': true}, function(tabs) { 
+            let currentTab = tabs[0];
+            console.log('Current Tab: ' + currentTab.url);
+            // if currentTab is twitter
+
+            // TODO: tweet.  Good time to learn promises
+            
+            // Redirect and close
+            //let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            //chrome.tabs.update(currentTab.id, {url: newUrl});
+            //window.close();
+        });
+        
+        
     });
 })
 
