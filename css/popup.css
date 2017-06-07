@@ -36,14 +36,17 @@ img {
     padding: 12px 16px;
     z-index: 1;
 }
-    .rob-dropdown-content[data-state=closed] {
+    .rob-dropdown-content[data-state="closed"] {
         visibility: hidden;
+        opacity: 0;
+		transform: translate3d(0, 20%, 0);
+        transition: all .2s;
     }
-    .rop-dropdown-content[data-state=open] {
-        /*transition: animation 1s;*/
-        transition: visibility 2s;
-        animation: fadeInAndDown 1s ease-in both;
-        visibility: inherit;
+    .rob-dropdown-content[data-state="open"] {
+        visibility: visible;
+        opacity: 1;
+		transform: translate3d(0, 0%, 0);
+        transition: all .2s;
     }
     .rob-dropdown-content > li {
         display: inline-block;
@@ -54,7 +57,6 @@ img {
             box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
         }
 
-/* From Twitter */
 button {
     border: 0;
     background: transparent;
@@ -62,12 +64,11 @@ button {
     transition: box-shadow .15s ease-in-out;
 }
 .btn {
-    background-color: #ccd6dd;
+    background-color: rgba(0,132,180,.8);
     background-repeat: no-repeat;
-    background-image: linear-gradient(#fff,#f5f8fa);
     border: 1px solid #e6ecf0;
     border-radius: 4px;
-    color: #66757f;
+    color: #fff;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
@@ -77,24 +78,21 @@ button {
     position: relative;
 }
     .btn:hover {
-        color: #14171a;
-        text-decoration: none;
-        background-color: #e6ecf0;
-        background-image: linear-gradient(#fff,#e6ecf0);
-        border-color: #e6ecf0;
+        background-color: #0084B4;
+        border-color: #0084B4;
+        box-shadow: none;
     }
     .btn:active {
-        color: #14171a;
-        background: #e6ecf0;
-        border-color: #ccd6dd;
-        box-shadow: inset 0 1px 4px rgba(0,0,0,0.2);
+        background-color: #0084B4;
+        border-color: #0084B4;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0084B4;
     }
     .btn:focus{
-        background: #fff;
-        border-color: #fff;
-        box-shadow: 0 0 0 2px #fff, 0 0 2px 4px rgba(0,132,180,0.5);
-        text-decoration: none;
+        background-color: rgba(0,132,180,.8);
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(0, 132, 180, 0.5);
     }
+
 .btn-tweet {
     float: right;
 }
@@ -106,19 +104,21 @@ input {
     margin: 0;
     outline: 0;
     background-color: #fff;
-    border: 1px solid #e6ecf0;
-    border-radius: 3px;
-    
 }
 
 .tweet-box {
+    resize: none;
     position: relative;
     min-height: 64px;
     overflow: hidden;
+    overflow-y: auto;
     padding: 8px;
     text-shadow: none;
     vertical-align: top;
-    width: auto;
+    width: 100%;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    font-family: Arial,sans-serif;
 }
 
 .input-bar {
@@ -130,46 +130,4 @@ input {
 }
 .counter {
     margin-right: 5px;
-}
-/* TODO: Fix Caret
-.dropdown-caret {
-    position: absolute;
-    top: -10px;
-    left: 12px;
-    width: 18px;
-    height: 10px;
-    float: left;
-    overflow: hidden;
-}
-
-.dropdown-caret .caret-outer {
-    border-bottom: 10px solid #657786;
-    border-bottom-color: rgba(0,0,0,0.1);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    height: auto;
-    left: 0;
-    top: 0;
-    width: auto;
-}
-
-.dropdown-caret .caret-inner {
-    top: 1px;
-    left: 1px;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-bottom: 9px solid #fff;
-    border-bottom-color: #fff;
-}*/
-
-/* Animations */
-@keyframes fadeInAndDown {
-	from {
-		opacity: 0;
-		transform: translate3d(0, -20%, 0);
-	}
-	to {
-		opacity: 1;
-		transform: translate3d(0, 0, 0);
-	}
 }
