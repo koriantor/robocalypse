@@ -42,33 +42,62 @@ $(function() {
 
     function updateCount() {
         var cs = 140 - $(this).val().length;
-        $('.js-tweet-counter').text(cs);
+        
+        var color = "black";
+        if (cs <= 20)
+             color = "#5c0002";
+        if (cs <= 10)
+             color = "#d40d12";
+        
+        $('.js-tweet-counter').text(cs).css("color", color);
     }
 
     // Tweet!
     $('.btn-tweet').click(function() {
-        if ($('#tbTweet').val().length > 140) return;
-        // TODO: Throw invalid tweet error.
+        if ($('#tbTweet').val().length > 140) {
+            $('.js-error').text("Tweet too long.");
+            return;
+        }
 
+        // Grab data
         let bob = $('.rob-selected').attr('data-selected');
         let tweet = $('#tbTweet').val();
-        console.log('Bob (' + bob + ') tweeted: ' + tweet);
+        let tweetRespondingTo = null;
+
+        // Check if we're responding to a tweet
         chrome.tabs.query({'active': true, 'currentWindow': true}, function(tabs) { 
             let currentTab = tabs[0];
-            console.log('Current Tab: ' + currentTab.url);
-            // if currentTab is twitter
 
-            // TODO: tweet.  Good time to learn promises
+            // Parse tweet
+            let parser = document.createElement('a');
+            parser.href = currentTab.url;
+            if (parser.hostname == "twitter.com") {
+                let path = parser.pathname.split("/");
+                console.log(path);
+                if (path.length > 1) {
+                    // Twitter path will look like /<user>/status/<tweetId>
+                    //                           0 /  1   /   2  /   3
+                    tweetRespondingTo = path[3];
+                }
+            }
+        });
+        displayError(tweetRespondingTo); // DOesn't work because callback ^
+        
+        // TODO: tweet.  Good time to learn promises
             
             // Redirect and close
             //let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
             //chrome.tabs.update(currentTab.id, {url: newUrl});
             //window.close();
-        });
         
         
     });
 })
+
+var displayError = function (err) {
+    var elem = document.getElementById('js-error');
+    elem.innerHTML = err;
+}
 
 var toggleState = function (elem, stateOne, stateTwo) {
     var elem = document.querySelector(elem);

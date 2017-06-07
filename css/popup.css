@@ -22,7 +22,8 @@ img {
     -webkit-appearance: none;  /* removes default Chrome style */
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
+    /*margin-right: auto;*/
     align-self: center;
 }
 
@@ -130,4 +131,10 @@ input {
 }
 .counter {
     margin-right: 5px;
+}
+
+.js-error{
+    color: #d40d12;
+    margin-right: auto;
+    margin-left: 10px;
 }
