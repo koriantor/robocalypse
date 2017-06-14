@@ -1,4 +1,7 @@
+js/node_modules/
+js/jquery-3.2.1.min.js
+js/bundle.js
+js/accountInfo.js
 css/twitter_core.bundle.css
 img/
-js/jquery-3.2.1.min.js
 accountInfo.json

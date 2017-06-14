@@ -1,19 +1,4 @@
-var onTweet = function() {
-    // TODO: chrome tabs
-    let currentTab = chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function(tabs) {return tabs[0];});
-
-    // Get from URL
-        // Call Proper Tweet fucntion
-    // Read from tweetbox
-        // Validation
-    // read from Bobdown
-
-    // Redirect to new tweet
-    
-};
-
-// TODO: Write authentication
-// TODO: Load JSON data
+var tweeter = require('./twitterFunctions');
 
 $(function() {
     $('.rob-dropdown > button').click(function() {
@@ -59,38 +44,10 @@ $(function() {
             return;
         }
 
-        // Grab data
-        let bob = $('.rob-selected').attr('data-selected');
-        let tweet = $('#tbTweet').val();
-        let tweetRespondingTo = null;
-
-        // Check if we're responding to a tweet
-        chrome.tabs.query({'active': true, 'currentWindow': true}, function(tabs) { 
-            let currentTab = tabs[0];
-
-            // Parse tweet
-            let parser = document.createElement('a');
-            parser.href = currentTab.url;
-            if (parser.hostname == "twitter.com") {
-                let path = parser.pathname.split("/");
-                console.log(path);
-                if (path.length > 1) {
-                    // Twitter path will look like /<user>/status/<tweetId>
-                    //                           0 /  1   /   2  /   3
-                    tweetRespondingTo = path[3];
-                }
-            }
-        });
-        displayError(tweetRespondingTo); // DOesn't work because callback ^
-        
-        // TODO: tweet.  Good time to learn promises
-            
-            // Redirect and close
-            //let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-            //chrome.tabs.update(currentTab.id, {url: newUrl});
-            //window.close();
-        
-        
+        GetTweetData()
+            .then( tweeter.tweet )
+            .then( redirect )
+            .catch( displayError );
     });
 })
 
@@ -102,4 +59,43 @@ var displayError = function (err) {
 var toggleState = function (elem, stateOne, stateTwo) {
     var elem = document.querySelector(elem);
     elem.setAttribute('data-state', elem.getAttribute('data-state') === stateOne ? stateTwo : stateOne);
+};
+
+var GetTweetData = () => {
+    return new Promise( (resolve, reject) => {
+        // Grab data
+        let rob = $('.rob-selected').attr('data-selected');
+        let tweet = $('#tbTweet').val();
+        let tweetData = { "rob": rob, "tweetContent": tweet };
+
+        // ASYNC
+        chrome.tabs.query({'active': true, 'currentWindow': true}, (tabs) => { 
+            let currentTab = tabs[0];
+
+            // Parse tweet
+            let parser = document.createElement('a');
+            parser.href = currentTab.url;
+            if (parser.hostname == "twitter.com") {
+                let path = parser.pathname.split("/");
+                console.log(path);
+                if (path.length > 1) {
+                    // Twitter path will look like /<user>/status/<tweetId>
+                    //                         [ 0 /  1   /   2  /   3    ]
+                    tweetData.RobRespondingTo = path[1];
+                    tweetData.TweetRespondingTo = path[3];
+                }
+            }
+            resolve(tweetData);
+        });
+    });
+};
+
+var redirect = function(newTweet) {
+    let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    //let newUrl = "https://twitter.com/" + newTweet.user.screen_name + "/status/" + newTweet.id_str;
+    chrome.tabs.query({'active': true, 'currentWindow': true}, (tabs) => { 
+        let currentTab = tabs[0];
+        chrome.tabs.update(currentTab.id, {url: newUrl});
+        window.close();
+    });
 };

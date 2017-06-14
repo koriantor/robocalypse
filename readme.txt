@@ -1,17 +1,31 @@
-TWITTER TODOS:
+SETUP:
+	(1) From cmd line, go to js folder.  Install:
+			Twitter (npm install twitter)
+			Browserify (npm install browserify)
+
+	(2) Browserify package
+			"browserify app.js > bundle.js"
+	
+	(3) Load Extension into chrome in developer mode.
+
+TODOS:
 	FRONT END:
-		-Styles
-		-Fix dropdown Caret
-		-Fix Dropdown animations
+		-Add red character highlighting for tweets over 140 characters
+		-Add animation while waiting for tweet
 		-Remember last selected bobby
 		-Tweet Images, gifs, etc.
 	
 	BACKEND:
-		-TweetAs()
 		-Tweet images, gifs, etc.
-		-Authentication
 		-Consider using chrome.pageAction instead of browser action
 
-Settings:
-	-Ask for Confirmation before tweet
-	-Redirect page after tweet
+	SETTINGS:
+		-Ask for Confirmation before tweet
+		-Redirect page after tweet
+	
+	FUTURE FEATURES:
+		-Notifications/check messages (Dashboard)
+		-GeoLocation
+		-Tweets w/ Media
+		-Twitter Site integration
+	

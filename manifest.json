@@ -3,7 +3,7 @@
 
   "name": "Robocalypse",
   "description": "Tool for tweeting as different Roberts.",
-  "version": "0.3.0",
+  "version": "0.4.0",
 
   "background": {
     "scripts": ["eventPage.js"],
@@ -16,6 +16,8 @@
   },
   "permissions": [
     "tabs",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "https://*.twitter.com/",
+    "https://twitter.com/"
   ]
 }
