@@ -91,8 +91,8 @@ var GetTweetData = () => {
 };
 
 var redirect = function(newTweet) {
-    let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    //let newUrl = "https://twitter.com/" + newTweet.user.screen_name + "/status/" + newTweet.id_str;
+    //let newUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    let newUrl = "https://twitter.com/" + newTweet.user.screen_name + "/status/" + newTweet.id_str;
     chrome.tabs.query({'active': true, 'currentWindow': true}, (tabs) => { 
         let currentTab = tabs[0];
         chrome.tabs.update(currentTab.id, {url: newUrl});
